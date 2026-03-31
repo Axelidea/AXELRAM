@@ -1,0 +1,105 @@
+{
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "stride": 512,
+  "max_length": 2048,
+  "configs": {
+    "random_2bit_QJL": {
+      "ppl": 12.2457,
+      "delta": 3.9591,
+      "rotation": "random",
+      "bits": 2,
+      "use_qjl": true,
+      "key_mse_bits": 1
+    },
+    "random_3bit_QJL": {
+      "ppl": 9.0701,
+      "delta": 0.7835,
+      "rotation": "random",
+      "bits": 3,
+      "use_qjl": true,
+      "key_mse_bits": 2
+    },
+    "random_4bit_QJL": {
+      "ppl": 9.1768,
+      "delta": 0.8901,
+      "rotation": "random",
+      "bits": 4,
+      "use_qjl": true,
+      "key_mse_bits": 3
+    },
+    "random_2bit_noQJL": {
+      "ppl": 9.0701,
+      "delta": 0.7835,
+      "rotation": "random",
+      "bits": 2,
+      "use_qjl": false,
+      "key_mse_bits": 2
+    },
+    "random_3bit_noQJL": {
+      "ppl": 9.1768,
+      "delta": 0.8901,
+      "rotation": "random",
+      "bits": 3,
+      "use_qjl": false,
+      "key_mse_bits": 3
+    },
+    "random_4bit_noQJL": {
+      "ppl": 9.2885,
+      "delta": 1.0018,
+      "rotation": "random",
+      "bits": 4,
+      "use_qjl": false,
+      "key_mse_bits": 4
+    },
+    "hadamard_2bit_QJL": {
+      "ppl": 12.2717,
+      "delta": 3.9851,
+      "rotation": "hadamard",
+      "bits": 2,
+      "use_qjl": true,
+      "key_mse_bits": 1
+    },
+    "hadamard_3bit_QJL": {
+      "ppl": 9.013,
+      "delta": 0.7264,
+      "rotation": "hadamard",
+      "bits": 3,
+      "use_qjl": true,
+      "key_mse_bits": 2
+    },
+    "hadamard_4bit_QJL": {
+      "ppl": 8.7276,
+      "delta": 0.441,
+      "rotation": "hadamard",
+      "bits": 4,
+      "use_qjl": true,
+      "key_mse_bits": 3
+    },
+    "hadamard_2bit_noQJL": {
+      "ppl": 9.013,
+      "delta": 0.7264,
+      "rotation": "hadamard",
+      "bits": 2,
+      "use_qjl": false,
+      "key_mse_bits": 2
+    },
+    "hadamard_3bit_noQJL": {
+      "ppl": 8.7276,
+      "delta": 0.441,
+      "rotation": "hadamard",
+      "bits": 3,
+      "use_qjl": false,
+      "key_mse_bits": 3
+    },
+    "hadamard_4bit_noQJL": {
+      "ppl": 18.7582,
+      "delta": 10.4716,
+      "rotation": "hadamard",
+      "bits": 4,
+      "use_qjl": false,
+      "key_mse_bits": 4
+    }
+  },
+  "fp16_ppl": 8.2867,
+  "fp16_tokens": 894021
+}

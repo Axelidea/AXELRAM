@@ -1,0 +1,206 @@
+{
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "fp16_ppl": 8.2867,
+  "seeds": [
+    42,
+    123,
+    456,
+    789,
+    1024
+  ],
+  "n_seeds": 5,
+  "configs": {
+    "random_2bit_QJL": {
+      "mean_delta": 5.3244,
+      "std_delta": 0.5591,
+      "min_delta": 4.4982,
+      "max_delta": 6.2022,
+      "all_deltas": [
+        6.2022,
+        5.3115,
+        5.5381,
+        5.0718,
+        4.4982
+      ],
+      "rotation": "random",
+      "bits": 2,
+      "use_qjl": true
+    },
+    "random_3bit_QJL": {
+      "mean_delta": 0.9158,
+      "std_delta": 0.1895,
+      "min_delta": 0.7564,
+      "max_delta": 1.2312,
+      "all_deltas": [
+        0.7625,
+        0.7897,
+        1.2312,
+        0.7564,
+        1.0392
+      ],
+      "rotation": "random",
+      "bits": 3,
+      "use_qjl": true
+    },
+    "random_4bit_QJL": {
+      "mean_delta": 2.8217,
+      "std_delta": 1.8334,
+      "min_delta": 0.8951,
+      "max_delta": 5.6736,
+      "all_deltas": [
+        0.8951,
+        1.3761,
+        5.6736,
+        1.912,
+        4.2516
+      ],
+      "rotation": "random",
+      "bits": 4,
+      "use_qjl": true
+    },
+    "random_2bit_noQJL": {
+      "mean_delta": 0.9046,
+      "std_delta": 0.1677,
+      "min_delta": 0.7461,
+      "max_delta": 1.1893,
+      "all_deltas": [
+        0.7835,
+        0.8026,
+        1.1893,
+        0.7461,
+        1.0016
+      ],
+      "rotation": "random",
+      "bits": 2,
+      "use_qjl": false
+    },
+    "random_3bit_noQJL": {
+      "mean_delta": 2.7517,
+      "std_delta": 1.7875,
+      "min_delta": 0.8901,
+      "max_delta": 5.52,
+      "all_deltas": [
+        0.8901,
+        1.3381,
+        5.52,
+        1.8387,
+        4.1715
+      ],
+      "rotation": "random",
+      "bits": 3,
+      "use_qjl": false
+    },
+    "random_4bit_noQJL": {
+      "mean_delta": 0.9405,
+      "std_delta": 0.5977,
+      "min_delta": 0.1128,
+      "max_delta": 1.9709,
+      "all_deltas": [
+        1.0018,
+        0.1128,
+        0.8291,
+        0.788,
+        1.9709
+      ],
+      "rotation": "random",
+      "bits": 4,
+      "use_qjl": false
+    },
+    "hadamard_2bit_QJL": {
+      "mean_delta": 4.5836,
+      "std_delta": 0.6726,
+      "min_delta": 3.7191,
+      "max_delta": 5.4906,
+      "all_deltas": [
+        5.4906,
+        4.079,
+        3.7191,
+        5.2212,
+        4.4079
+      ],
+      "rotation": "hadamard",
+      "bits": 2,
+      "use_qjl": true
+    },
+    "hadamard_3bit_QJL": {
+      "mean_delta": 1.0104,
+      "std_delta": 0.5427,
+      "min_delta": 0.699,
+      "max_delta": 2.0914,
+      "all_deltas": [
+        0.7197,
+        0.708,
+        2.0914,
+        0.8338,
+        0.699
+      ],
+      "rotation": "hadamard",
+      "bits": 3,
+      "use_qjl": true
+    },
+    "hadamard_4bit_QJL": {
+      "mean_delta": 3.703,
+      "std_delta": 4.1838,
+      "min_delta": 0.4454,
+      "max_delta": 11.9018,
+      "all_deltas": [
+        0.4454,
+        2.8934,
+        11.9018,
+        1.1386,
+        2.1358
+      ],
+      "rotation": "hadamard",
+      "bits": 4,
+      "use_qjl": true
+    },
+    "hadamard_2bit_noQJL": {
+      "mean_delta": 1.0086,
+      "std_delta": 0.5124,
+      "min_delta": 0.7186,
+      "max_delta": 2.0288,
+      "all_deltas": [
+        0.7264,
+        0.7213,
+        2.0288,
+        0.8481,
+        0.7186
+      ],
+      "rotation": "hadamard",
+      "bits": 2,
+      "use_qjl": false
+    },
+    "hadamard_3bit_noQJL": {
+      "mean_delta": 3.6381,
+      "std_delta": 4.117,
+      "min_delta": 0.441,
+      "max_delta": 11.707,
+      "all_deltas": [
+        0.441,
+        2.8301,
+        11.707,
+        1.1024,
+        2.1101
+      ],
+      "rotation": "hadamard",
+      "bits": 3,
+      "use_qjl": false
+    },
+    "hadamard_4bit_noQJL": {
+      "mean_delta": 2.7995,
+      "std_delta": 3.885,
+      "min_delta": 0.1932,
+      "max_delta": 10.4716,
+      "all_deltas": [
+        10.4716,
+        0.1932,
+        0.4205,
+        1.9785,
+        0.9338
+      ],
+      "rotation": "hadamard",
+      "bits": 4,
+      "use_qjl": false
+    }
+  }
+}

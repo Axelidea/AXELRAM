@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+.vscode/
+.idea/
+*.swp
+*.bin
+*.safetensors
+*.pt
+*.pth
+models/
+.DS_Store
+wandb/
+.claude/
+
+# Secrets / credentials - NEVER commit
+.env
+.env.*
+*.key
+*.pem
+token.txt
+credentials*
+secrets*

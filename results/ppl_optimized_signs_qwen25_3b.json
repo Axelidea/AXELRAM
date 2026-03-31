@@ -1,0 +1,10 @@
+{
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "bits": 3,
+  "fp16_ppl": 8.2867,
+  "default_ppl": 8.7276,
+  "default_delta": 0.441,
+  "optimized_ppl": 8.8657,
+  "optimized_delta": 0.579,
+  "gap_reduction_pct": -31.3
+}
