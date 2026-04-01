@@ -15,13 +15,7 @@ venv/
 models/
 .DS_Store
 wandb/
-.claude/
-
-# Secrets / credentials - NEVER commit
 .env
 .env.*
 *.key
 *.pem
-token.txt
-credentials*
-secrets*
