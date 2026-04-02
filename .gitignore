@@ -19,3 +19,8 @@ wandb/
 .env.*
 *.key
 *.pem
+*.aux
+*.log
+*.out
+*.bbl
+*.blg

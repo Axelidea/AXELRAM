@@ -53,8 +53,8 @@ The design-time fixed codebook (30 bytes for $b{=}3$) is shared across all $d$ d
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{fig_comparison.png}
-\caption{Processing flow comparison. Conventional (top): GPU computes K,V, quantizes in software, stores to HBM, reads back with software dequantization---$d \times T$ multiplications per query. AXELRAM (bottom): single-step write (Hadamard + quantize + SRAM store) and single-step read (table lookup + add)---1 multiplication per key, on-chip SRAM only.}
+\includegraphics[width=\columnwidth]{fig_concept.png}
+\caption{Quantize Once, Never Dequantize. Conventional rotation-based quantization (top) must dequantize and inverse-rotate each stored key before computing attention---$T \times O(d\log d)$ per query. AXELRAM (bottom) computes attention entirely within the rotated transform domain: the query is rotated once, and scores are computed via pre-computed codebook products with no dequantization. The orthogonal invariance $\langle \mathbf{q}, \mathbf{k} \rangle = \langle R\mathbf{q}, R\mathbf{k} \rangle$ makes this possible, yielding $102.4\times$ fewer multiplications.}
 \label{fig:comparison}
 \end{figure}
 
@@ -67,7 +67,7 @@ The Lloyd-Max quantizer for this distribution yields centroids and boundaries as
 For $b{=}3$, $d{=}128$: 8~centroids + 7~boundaries = 15~FP16 values = 30~bytes, verified to satisfy the Lloyd-Max optimality conditions to machine precision ($< 10^{-11}$).
 
 The inner product is preserved under orthogonal transforms: $\mathbf{q}^\top \mathbf{k} = (R\mathbf{q})^\top(R\mathbf{k})$.
-Instead of inverse-transforming each stored key ($T$ times), we transform the query once and compute in the rotated space:
+Instead of inverse-transforming each stored key ($T$ times), we transform the query once and compute in the rotated transform domain:
 \begin{equation}
 \langle \mathbf{q}, \hat{\mathbf{k}} \rangle
 = \langle R\mathbf{q},\; \mathrm{codebook}[\mathrm{idx}] \rangle \times \|\mathbf{k}\|
@@ -96,7 +96,7 @@ The write path (Fig.~\ref{fig:macro}, left) applies a randomized Hadamard transf
 The sign vector $\mathbf{s} \in \{-1,+1\}^d$ is stored in ROM/eFuse (16 bytes for $d{=}128$).
 
 \subsection{Read Path (Table Lookup + Accumulate)}
-The read path (Fig.~\ref{fig:macro}, right) operates as follows.
+The read path (Fig.~\ref{fig:macro}, right; detailed in Fig.~\ref{fig:readpath}) operates in two phases.
 Upon query arrival:
 \begin{enumerate}[leftmargin=*,nosep]
 \item Transform query: $\mathbf{q}_\mathrm{rot} = R \mathbf{q}$ (one FWHT, same circuit as write path).
@@ -107,12 +107,12 @@ Upon query arrival:
 The read path contains \emph{no inverse transform circuit}.
 The inner product is computed entirely from the transformed query coordinates, codebook centroids, and stored indices.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{fig_readpath.png}
-\caption{Read path detail. Phase~1 (once per query): FWHT rotation of query, table generation ($d \times 2^b$ multiplications). Phase~2 (repeated $T$ times): table lookup, adder tree, norm scaling (1 multiplication per key).}
+\includegraphics[width=\textwidth]{fig_readpath.png}
+\caption{Read path detail. Phase~1 (once per query): FWHT rotation of query, table generation ($d \times 2^b$ multiplications). Phase~2 (repeated $T$ times): table lookup, adder tree, norm scaling (1 multiplication per key). Total: 5,120 multiplications for $T{=}4096$ versus 524,288 conventional ($102.4\times$ reduction).}
 \label{fig:readpath}
-\end{figure}
+\end{figure*}
 
 \subsection{Multiplication Count}
 \begin{equation}
@@ -409,6 +409,10 @@ No hardware has been fabricated; we present the architecture as a proposal valid
 % ================================================================
 \section*{Acknowledgments}
 Part of the computational work was performed using the TSUBAME4.0 supercomputer at Institute of Science Tokyo.
+
+\medskip
+Finally, we observe that Penguins---awkward in their waddle on land, yet remarkably graceful once they enter water---remind us that choosing the right domain makes all the difference.
+We thank the Penguins for the inspiration.
 
 % ================================================================
 \bibliographystyle{IEEEtran}
