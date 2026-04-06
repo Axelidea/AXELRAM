@@ -2,7 +2,7 @@
 
 A smart SRAM macro architecture that computes attention scores directly from quantized KV cache indices without dequantization.
 
-**Paper**: [arXiv:XXXX.XXXXX](https://arxiv.org/abs/XXXX.XXXXX) (to appear)
+**Paper**: [arXiv:2604.02638](https://arxiv.org/abs/2604.02638)
 
 **Author**: Yasushi Nishida ([Axelidea Inc.](https://axelidea.com))
 
@@ -61,7 +61,7 @@ Part of the computational work in this study was performed using the TSUBAME4.0 
 @article{nishida2026axelram,
   title={AXELRAM: Quantize Once, Never Dequantize},
   author={Nishida, Yasushi},
-  journal={arXiv preprint arXiv:XXXX.XXXXX},
+  journal={arXiv preprint arXiv:2604.02638},
   year={2026}
 }
 ```
